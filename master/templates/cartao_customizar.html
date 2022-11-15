@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title%}Sign Up{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <h3 align="center">Sign Up</h3>
+        <div class="form-group">
+            <label for="matricula">Matricula</label>
+            <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Insira número da matrícula"/>
+        </div>
+        <div class="form-group">
+            <label for="email_corporativo">Nome</label>
+            <input type="email" class="form-control" id="email_corporativo" name="email_corporativo" placeholder="Insira E-mail Corporativo"/>
+        </div>
+        <div class="form-group">
+            <label for="ramal">Senha</label>
+            <input type="text" class="form-control" id="ramal" name="ramal" placeholder="Insira ramal"/>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+{% endblock %}

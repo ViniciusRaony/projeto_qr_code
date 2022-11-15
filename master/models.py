@@ -1,14 +1,13 @@
 from . import db
+from flask_login import UserMixin
 
 
-class Usuario(db.Model):
-    __tablename__ = 'Usuario'
+class Usuario(db.Model, UserMixin):
+    __tablename__ = 'usuario'
 
     id = db.Column(db.Integer, primary_key=True)
-    cpf = db.Column(db.String(14), nullable=False, unique=True)
     nome = db.Column(db.String(45), nullable=False)
     email_pessoal = db.Column(db.String(45), nullable=False, unique=True)
-    login = db.Column(db.String(45), nullable=False, unique=True)
     senha = db.Column(db.String(45), nullable=False)
     # One-to-One relationship
     funcionario = db.relationship('Funcionario', backref='usuario', lazy=True, uselist=False)
@@ -17,47 +16,21 @@ class Usuario(db.Model):
     # One-To-Many relationship
     rede = db.relationship('Rede', backref='usuario', lazy=True)
 
-    def __init__(self, cpf, nome, email_pessoal, login, senha):
-        self.cpf = cpf
+    def __init__(self, nome, email_pessoal, senha):
         self.nome = nome
         self.email_pessoal = email_pessoal
-        self.login = login
         self.senha = senha
 
     def json(self):
         return {
-            'cpf': self.cpf,
-            'name': self.name,
+            'nome': self.nome,
             'email_pessoal': self.email_pessoal,
-            'login': self.login,
             'senha': self.senha,
         }
 
-    def encontrar_usuario(cls, id):
-        # SELECT * FROM users WHERE cpf(do db) = cpf(do parametro)
-        usuario = cls.query.filter_by(id=id).first()
-        if usuario:
-            return usuario
-        return None
-
-    def salvar_usuario(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def atualizar_usuario(self, cpf, nome, email_pessoal, login, senha):
-        self.cpf = cpf
-        self.nome = nome
-        self.email_pessoal = email_pessoal
-        self.login = login
-        self.senha = senha
-
-    def deletar_usuario(self):
-        db.session.delete(self)
-        db.session.commit()
-
 
 class Funcionario(db.Model):
-    __tablename__ = 'Funcionario'
+    __tablename__ = 'funcionario'
 
     id = db.Column(db.Integer, primary_key=True)
     matricula = db.Column(db.String(25), nullable=False)
@@ -84,7 +57,7 @@ class Funcionario(db.Model):
 
 
 class Rede(db.Model):
-    __tablename__ = 'Rede'
+    __tablename__ = 'rede'
 
     id = db.Column(db.Integer, primary_key=True)
     link = db.Column(db.String(45), nullable=False)
@@ -118,7 +91,7 @@ class Telefone(db.Model):
 
 
 class Departamento(db.Model):
-    __tablename__ = 'Departamento'
+    __tablename__ = 'departamento'
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(24), nullable=False)
@@ -135,9 +108,9 @@ class Departamento(db.Model):
 
 
 class Cargo(db.Model):
-    __tablename__ = 'Cargo'
+    __tablename__ = 'cargo'
 
-    id = db.Column(db.String, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     cbo = db.Column(db.String(25), nullable=False)
     # One-To-Many relationship
     funcionario = db.relationship('Funcionario', backref='cargo', lazy=True)
