@@ -25,7 +25,7 @@ Antes de iniciar a aplicação é necessário a instalação das seguintes ferra
 
 - Clone esse repositório:
 
-  ```$ git clone <https://github.com/next-cesar-school/next20221-t11-envio-automatizado-mensagem.git>```
+  ```$ git clone <https://github.com/ViniciusRaony/projeto_qr_code.git>```
 
 - Crie uma variável de ambiente para criação do Banco de Dados: 
 
