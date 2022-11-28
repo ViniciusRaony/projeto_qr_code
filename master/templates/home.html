@@ -1,7 +1,70 @@
 {% extends "base.html" %} {% block title%}Home{% endblock %}
 
 {% block content %}
-    <h1>Página principal pedindo para criar o cartão, caso existir exibir aqui</h1>
-    <p>Botão Gerar QR-Code</p>
-    <p>Botão para ir para a pagina cartao_customizar</p>
+    <nav class="navbar bg-dark">
+        <div class="container-fluid">
+            <img class="d-inline-block align-text-top"
+                width="30" height="24"
+                src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="logomarca">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <div class="user d-flex justify-space-between align-items-center">
+                        <h5 class="offcanvas-title p-1" id="offcanvasNavbarLabel">Usuário 1</h5>
+                        <img src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png"
+                            class="rounded p-1" alt="foto-usuário" width="30" height="24">
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id=logout href="/logout">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <img class="d-flex mx-auto mt-5" src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="logomarca">
+        <h1 class="mt-5 text-center">Menu Inicial</h1>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button onclick="acessaPagina('4')" class="d-flex flex-column btn btn-primary btn-lg p-4 my-5 button-opcao align-items-center" type="button">
+                <img src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="item-menu">
+                <span class="mt-5">Emitir Cartão Corporativo</span>
+            </button>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <button class="d-flex flex-column btn btn-primary btn-lg p-4 my-5 button-opcao align-items-center" type="button">
+                <img src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="item-menu">
+                <a class="mt-5" id="qr_code" href="{{ url_for('views.qr_code') }}">Emitir Cartão Não-Corporativo</a>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button onclick="acessaPagina('6')" class="d-flex flex-column btn btn-primary btn-lg p-4 my-5 button-opcao align-items-center" type="button">
+                <img src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="item-menu">
+                <span class="mt-5">Atualizar Dados</span>
+            </button>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <button onclick="acessaPagina('7')" class="d-flex flex-column btn btn-primary btn-lg p-4 my-5 button-opcao align-items-center" type="button">
+                <img src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="item-menu">
+                <span class="mt-5">Customizar Cartão</span>
+            </button>
+          </div>
+        </div>
+    </div>
 {% endblock %}

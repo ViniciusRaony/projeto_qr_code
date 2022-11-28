@@ -1,5 +1,14 @@
 {% extends "base.html" %} {% block title%}Login{% endblock %}
 
 {% block content %}
-    <h1>Página com imagem do qrcode ou link qr/code</h1>
+    <div class="container">
+        <img class="d-flex mx-auto mt-5" src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="logomarca">
+        <h1 class="mt-5 text-center">QR-Code</h1>
+    </div>
+
+    <div class="container text-center">
+        <img class="d-flex mx-auto mt-5" src="../static/frame.png" alt="qr-code">
+        <h4 class="mt-5 text-center corp">Cartão Corporativo - Funcionário 1</h4>
+        <h4 class="mt-5 text-center no-corp">Cartão Não-Corporativo - Funcionário 1</h4>
+    </div>
 {% endblock %}
