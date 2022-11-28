@@ -1,0 +1,58 @@
+@font-face {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    src: local("Biennale/Fontspring-DEMO-biennale-regular.otf");
+}
+
+:root {
+    --azul-claro: #0072c3;
+    --azul-medio: #254caf;
+    --azul-escuro: #182a74;
+    --amarelo-claro: #ffbf3c;
+    --amarelo-escuro: #eba900;
+}
+
+body {
+    background-color: var(--azul-escuro);
+}
+
+h1, h4, label, .conta, .conta-link {
+    color: #fff;
+}
+
+button {
+    background-color: var(--amarelo-escuro) !important;
+    color: var(--azul-escuro) !important;
+}
+
+button:hover {
+    background-color: var(--amarelo-claro) !important;
+}
+
+.button-cadastrar {
+    background-color: var(--azul-medio) !important;
+    color: #fff !important;
+}
+
+.button-cadastrar:hover {
+    background-color: var(--azul-claro) !important;
+}
+
+.button-opcao {
+    min-width: 320px;
+    min-height: 280px;
+}
+
+.corp {
+    color: #fff;
+    display: none;
+}
+
+.no-corp {
+    color: #fff;
+    /*display: none;*/
+}
+
+.card {
+    max-width: 600px !important;
+    max-height: 800px !important;
+}

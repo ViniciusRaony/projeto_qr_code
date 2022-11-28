@@ -1,17 +1,24 @@
-{% extends "base.html" %} {% block title%}Login{% endblock %}
+{% extends "base.html" %} {% block title%}Sign In{% endblock %}
 
 {% block content %}
-    <form method="POST">
-        <h3 align="center">Login</h3>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Insira email"/>
-        </div>
-        <div class="form-group">
-            <label for="senha">Senha</label>
-            <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira senha"/>
-        </div>
-        <br />
-        <button type="submit" class="btn btn-primary">Entrar</button>
-    </form>
+    <div class="container">
+        <img class="d-flex mx-auto my-3 mt-5" src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="logomarca">
+
+        <h1 class="d-flex justify-content-center mt-5">Login</h1>
+
+        <form class="p-2 col-9 mx-auto" method="POST" >
+            <div class="form-group">
+                <label class="mt-2" for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Insira email"/>
+            </div>
+            <div class="form-group">
+                <label class="mt-2" for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira senha"/>
+            </div>
+            <div class="d-grid mx-auto my-5">
+                <button type="submit" class="btn btn-primary fw-bold mt-3">Entrar</button>
+                <a class="btn btn-primary fw-bold mt-3 button-cadastrar" href="{{ url_for('auth.sign_up') }}">Criar Conta</a>
+            </div>
+        </form>
+    </div>
 {% endblock %}

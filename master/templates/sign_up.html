@@ -1,25 +1,32 @@
 {% extends "base.html" %} {% block title%}Sign Up{% endblock %}
 
 {% block content %}
-    <form method="POST">
-        <h3 align="center">Sign Up</h3>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Insira email"/>
-        </div>
-        <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira Nome"/>
-        </div>
-        <div class="form-group">
-            <label for="senha1">Senha</label>
-            <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Insira senha"/>
-        </div>
-        <div class="form-group">
-            <label for="senha2">Repetir senha</label>
-            <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Confirme senha"/>
-        </div>
-        <br />
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+    <div class="container">
+        <img class="d-flex mx-auto my-3 mt-5" src="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/moura-logo-symbol-big.png" alt="logomarca">
+
+        <h1 class="d-flex justify-content-center mt-5">Cadastro</h1>
+
+        <form class="p-2 col-9 mx-auto" method="POST">
+            <div class="form-group">
+                <label class="mt-2" for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Insira email"/>
+            </div>
+            <div class="form-group">
+                <label class="mt-2" for="nome">Nome Completo</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira nome"/>
+            </div>
+            <div class="form-group">
+                <label class="mt-2" for="senha1">Senha</label>
+                <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Insira senha"/>
+            </div>
+            <div class="form-group">
+                <label class="mt-2" for="senha2">Repetir senha</label>
+                <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Confirme senha"/>
+            </div>
+            <div class="d-grid mx-auto my-5">
+                <button type="submit" class="btn btn-primary fw-bold mt-3">Enviar</button>
+                <span class="conta">Já possui conta? <a class="conta-link" href="{{ url_for('auth.login') }}">Faça seu login</a></span>
+            </div>
+        </form>
+    </div>
 {% endblock %}

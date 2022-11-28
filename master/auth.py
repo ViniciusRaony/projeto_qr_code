@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-
 from . import db
 from .models import Usuario
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
@@ -13,26 +13,26 @@ def login():
         email = request.form.get('email')
         senha = request.form.get('senha')
 
-        usuario = Usuario.query.filter_by(email=email).first()
+        usuario = Usuario.query.filter_by(email_pessoal=email).first()
         if usuario:
-            if check_password_hash(usuario.senhar, senha):
+            if check_password_hash(usuario.senha, senha):
                 flash('Logado com sucesso', category='sucess')
+                login_user(usuario, remember=True)
+                return redirect(url_for('views.home'))
             else:
                 flash('Senha incorreta, tente novamente.', category='error')
         else:
-            flash('Emal inexistente.', category='error')
+            flash('Email inexistente.', category='error')
 
-    return render_template('login.html', text="Testing")  # Passar valores para o template
-
-
-@auth.route('/qr-code', methods=['GET', 'POST'])
-def qr_code():
-    return render_template('qr_code.html')
+    return render_template('login.html', user=current_user)
 
 
-@auth.route('/cartao-customizar', methods=['GET', 'POST'])
-def cartao_customizar():
-    return render_template('cartao_customizar.html')
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
+#
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
@@ -53,7 +53,8 @@ def sign_up():
                                    senha=generate_password_hash(senha1, method='sha256'))
             db.session.add(novo_usuario)
             db.session.commit()
+            login_user(usuario, remember=True)
             flash('Conta criada com sucesso!', category='error')
             return redirect(url_for('views.home'))
 
-    return render_template('sign_up.html')
+    return render_template('sign_up.html', user=current_user)
