@@ -47,15 +47,24 @@ Antes de iniciar a aplicação é necessário a instalação das seguintes ferra
 ## 🚉 Rotas da API
 
 
-- Rota ```/user``` (método ```GET```): Retorna todos usários cadastrados na API
+- Rota ```/login``` (método ```POST```): Login usuário
 
-- Rota ```/user/id``` (método ```GET```): Retorna um usário cadastrado na API baseado no ```id```
+- Rota ```/sign_up``` (método ```POST```): Cadastrar usuario
 
-- Rota ```/user``` (método ```POST```): Cria um cadastro de usuário na API
+- Rota ```/logout```: Deslogar do sistema
 
-- Rota ```/user/id``` (método ```PUT```): Atualiza um cadastro de usuário na API baseado no ```id```
+- Rota ```/user``` (método ```POST```): Cadastrar cartão
 
-- Rota ```/user/id``` (método ```DELETE```): Deleta um cadastro de usuário na API baseado no ```id```
+- Rota ```/user/id``` (método ```GET```): Retornar dados do cartão 
+
+- Rota ```/user/id``` (método ```PUT```): Atualiza dados do cartao
+
+- Rota ```/user/id``` (método ```DELETE```): Deletar dados do cartão
+
+- Rota ```/user/qr_code_c``` (método ```GET```): Retorna QR Code coorporativo 
+
+- Rota ```/user/qr_code_p``` (método ```GET```): Retornar QR Code pessoal
+
 
 ### Links úteis
 
