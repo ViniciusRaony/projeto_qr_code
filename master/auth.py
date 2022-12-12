@@ -53,7 +53,6 @@ def sign_up():
                                    senha=generate_password_hash(senha1, method='sha256'))
             db.session.add(novo_usuario)
             db.session.commit()
-            login_user(usuario, remember=True)
             flash('Conta criada com sucesso!', category='error')
             return redirect(url_for('views.home'))
 
